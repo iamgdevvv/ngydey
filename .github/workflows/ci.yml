@@ -3,7 +3,7 @@ name: Continuous Integration
 on:
   pull_request:
     branches:
-      - master
+      - main
  
 jobs:
   automation-test-job:
@@ -19,4 +19,4 @@ jobs:
         run: |
           npm install
           npm run test
-          npm run cy:e2e
+          npm run ci:e2e
