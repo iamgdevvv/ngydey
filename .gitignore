@@ -24,4 +24,5 @@ storybook-static
 *.sln
 *.sw?
 
-cypress/screenshots/**
+cypress/screenshots
+screenshot
