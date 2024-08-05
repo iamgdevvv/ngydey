@@ -47,7 +47,7 @@ export default function LoginForm({ className = '' }: Prop) {
 				label='Email'
 				size='md'
 				mb='md'
-				{...form.getInputProps('email')}
+				{...form.getInputProps('emailz')}
 			/>
 			<PasswordInput
 				label='Password'
