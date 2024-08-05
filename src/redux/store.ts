@@ -3,11 +3,13 @@ import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
 import { persistReducer } from 'redux-persist';
 import storageSession from 'redux-persist/lib/storage/session';
-import authUserReducer from '@/redux/reducers/auth-user';
+import authSlices from '@/redux/slices/auth';
+import userSlices from '@/redux/slices/user';
 import forumApi from '@/redux/apis/forumApi';
 
 const reducers = combineReducers({
-	[authUserReducer.name]: authUserReducer.reducer,
+	[authSlices.name]: authSlices.reducer,
+	[userSlices.name]: userSlices.reducer,
 	[forumApi.reducerPath]: forumApi.reducer,
 });
 

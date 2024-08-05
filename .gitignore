@@ -23,6 +23,7 @@ storybook-static
 *.njsproj
 *.sln
 *.sw?
+*.zip
 
 package-lock.json
 

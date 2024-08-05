@@ -54,6 +54,10 @@ export default function FormComment({ threadId, className = '', disabled = false
 		}
 	}, [resultCreateComment, onSuccess]);
 
+	if (!user.id) {
+		return null;
+	}
+
 	return (
 		<form
 			onSubmit={form.onSubmit(handleSubmit, () => setSubmited(true))}
