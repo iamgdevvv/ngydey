@@ -1,0 +1,49 @@
+.author_thread {
+	--size-avatar: 48px;
+	@apply relative w-full min-h-[var(--size-avatar)];
+	@apply flex flex-col justify-center;
+	@apply pt-[4px] pl-[calc(var(--size-avatar)+10px)];
+
+	.name_author {
+		@apply block font-bold;
+	}
+
+	.cta_author {
+		@apply block text-sm text-cyan-400 underline mt-[4px];
+	}
+}
+
+.avatar_thread {
+	@apply absolute top-0 left-0 rounded-none;
+	@apply w-[var(--size-avatar)] h-[var(--size-avatar)];
+
+	&>* {
+		@apply bg-cyan-400 rounded-[var(--rounded-special)] overflow-hidden;
+	}
+}
+
+.meta_thread {
+	@apply sticky bottom-0 w-full py-[10px] my-[20px];
+	@apply flex items-center justify-center;
+	@apply bg-white;
+
+	.metas {
+		@apply w-full flex items-center gap-4;
+	}
+}
+
+.title_nav {
+	@apply mt-[32px] mb-[10px];
+}
+
+.date_thread {
+	@apply text-sm text-gray-400;
+}
+
+.body_thread {
+	@apply mt-[20px];
+}
+
+.comment_idea {
+	@apply sticky bottom-0 pt-[10px] pb-[20px] mt-[10px] bg-white;
+}

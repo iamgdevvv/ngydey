@@ -1,0 +1,19 @@
+.form_comment {
+	@apply flex flex-wrap;
+}
+
+.author_comment {
+	--size-avatar: 40px;
+	@apply relative w-full min-h-[var(--size-avatar)];
+	@apply flex flex-col justify-center;
+	@apply pt-[4px] pl-[calc(var(--size-avatar)+10px)];
+}
+
+.avatar_comment {
+	@apply absolute top-[4px] left-0 rounded-none;
+	@apply w-[var(--size-avatar)] h-[var(--size-avatar)];
+
+	& > * {
+		@apply bg-cyan-400 rounded-[var(--rounded-special)] overflow-hidden;
+	}
+}

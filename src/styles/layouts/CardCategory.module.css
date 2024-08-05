@@ -1,0 +1,27 @@
+.listcard {
+	@apply relative;
+	@apply flex items-end;
+	@apply w-full min-h-[120px] p-[20px];
+	@apply bg-cyan-400 rounded-lg;
+	@apply text-white;
+
+	&::before {
+		@apply content-[''] absolute top-[-40px] right-[-40px];
+		@apply w-[120px] h-[120px];
+		@apply bg-white/40 animate-spin rounded-[var(--rounded-special)];
+		animation-duration: 4s;
+	}
+}
+
+.body_card {
+	@apply relative z-[2];
+	counter-reset: icon_card;
+}
+
+.title {
+	@apply text-base font-semibold mb-0 capitalize;
+}
+
+.content {
+	@apply text-sm;
+}

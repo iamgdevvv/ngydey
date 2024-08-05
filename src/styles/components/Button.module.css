@@ -1,0 +1,47 @@
+.btn_wrapper {
+	@apply w-full inline-flex items-start;
+}
+
+.btn {
+	@apply inline-flex items-center justify-between text-base text-center font-semibold leading-tight py-[10px] px-[16px] rounded-full transition;
+
+	& > * {
+		@apply transform-gpu transition;
+		@apply mx-[calc(var(--icon-gap)/2)] first:ml-0 last:mr-0;
+	}
+
+	&[disabled] {
+		@apply pointer-events-none opacity-60;
+	}
+}
+
+.btn_size_full {
+	@apply w-full;
+}
+
+.btn_size_auto {
+	@apply w-auto;
+}
+
+.btn_fill {
+	@apply border-cyan-400 bg-cyan-400 text-white;
+	@apply hover:opacity-95;
+
+	&[disabled] {
+		@apply border-gray-300 bg-gray-300;
+	}
+}
+
+.btn_outline {
+	@apply text-cyan-400;
+	@apply bg-transparent border border-solid border-cyan-400;
+
+	&:hover {
+		@apply text-white bg-cyan-400;
+	}
+}
+
+.btn_inline {
+	@apply text-inherit;
+	font-size: inherit;
+}

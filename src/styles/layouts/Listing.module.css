@@ -1,0 +1,37 @@
+.listing_wrapper {
+	@apply w-full;
+}
+
+.listing_wrapper_loading {
+	@apply w-full flex flex-wrap;
+}
+
+.listing {
+	--column: 1;
+	/* --column-md: 1;
+	--column-sm: 1; */
+	--col-gap: 0px;
+	--row-gap: 0px;
+	@apply min-w-full w-auto -mx-[var(--col-gap)] mb-[calc(var(--row-gap)*-1)];
+	@apply flex items-stretch flex-wrap;
+
+	.item {
+		@apply w-auto min-w-[calc(100%/var(--column))] px-[var(--col-gap)] mb-[var(--row-gap)];
+		/* @apply <sm:w-[calc(100%/var(--column-sm))];
+		@apply <lg:w-[calc(100%/var(--column-md))];
+		@apply lg:w-[calc(100%/var(--column))]; */
+	}
+}
+
+.listing_slider {
+	@apply overflow-x-auto overflow-y-visible snap-mandatory snap-x;
+	@apply flex-nowrap;
+	@apply mx-[calc(var(--inner-container)*-1)] mb-0 pl-[calc(var(--inner-container)-var(--col-gap))] pb-[var(--col-gap)];
+	@apply scrollbar scrollbar-w-[6px] scrollbar-h-[6px] scrollbar-thumb-rounded scrollbar-thumb-gray-400 scrollbar-track-gray-100 scroll-px-[var(--inner-container)] transition;
+	@apply <lg:scrollbar-thumb-transparent <lg:scrollbar-track-transparent;
+
+	.item {
+		@apply snap-start;
+		@apply mb-0;
+	}
+}

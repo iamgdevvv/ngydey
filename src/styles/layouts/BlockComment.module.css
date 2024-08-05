@@ -1,0 +1,68 @@
+.listblock {
+	@apply block;
+	@apply w-full;
+}
+
+.body_block {
+	@apply w-full pb-[10px];
+	@apply border-b-[2px] border-gray-200;
+}
+
+.title {
+	@apply w-full mb-[6px];
+	@apply text-lg font-bold;
+
+	a:hover {
+		@apply text-cyan-400;
+	}
+}
+
+.excerpt {
+	@apply relative overflow-hidden;
+	@apply w-full max-h-[100px];
+	@apply text-base;
+}
+
+.head_block {
+	@apply flex items-center;
+	@apply w-full mt-[10px];
+}
+
+.metas {
+	@apply flex;
+	@apply w-auto mx-[-4px] mb-[-6px];
+
+	li {
+		@apply w-auto px-[4px] mb-[6px];
+	}
+}
+
+.meta {
+	@apply flex items-center;
+	@apply py-1 px-2;
+	@apply text-sm text-gray-400;
+	@apply border-gray-400;
+
+	&:hover,
+	&.meta__active {
+		@apply bg-transparent border-cyan-400;
+		@apply text-cyan-400;
+	}
+
+	&.meta_downvote {
+		&:hover,
+		&.meta__active {
+			@apply border-red-400 text-red-400;
+		}
+	}
+
+	.icon_meta {
+		@apply text-xl;
+		@apply min-w-[18px] mr-[4px];
+	}
+}
+
+.times {
+	@apply text-xs text-gray-400;
+	@apply ml-auto mr-[6px];
+}

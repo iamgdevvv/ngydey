@@ -1,0 +1,13 @@
+.navigation {
+	--size-nav: 48px;
+	@apply sticky top-0 z-10 py-[16px] px-[var(--size-nav)] mb-[var(--inner-container)] bg-cyan-50;
+}
+
+.cta_prev_nav {
+	@apply absolute top-[16px] left-0 flex items-center justify-end w-[var(--size-nav)] text-3xl;
+}
+
+.heading_nav {
+	@apply text-lg font-semibold text-center line-clamp-1;
+	@apply flex items-center justify-center;
+}

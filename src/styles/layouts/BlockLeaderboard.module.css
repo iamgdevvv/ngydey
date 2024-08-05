@@ -1,0 +1,48 @@
+.listblock {
+	--avatar-size: 40px;
+	--score-size: 28px;
+	--gap: 16px;
+	@apply relative;
+	@apply flex items-center flex-wrap;
+	@apply w-full min-h-[var(--avatar-size)] py-[10px] pl-[calc(var(--avatar-size)+var(--gap))] pr-[calc(var(--score-size)+var(--gap))];
+
+	&:hover {
+		.avatar {
+			img {
+				@apply scale-105;
+			}
+		}
+
+		.title {
+			@apply text-cyan-400;
+		}
+	}
+
+	.avatar {
+		@apply absolute top-0 left-0 overflow-hidden;
+		@apply w-[var(--avatar-size)] h-[var(--avatar-size)];
+		@apply rounded-[var(--rounded-special)];
+
+		img {
+			@apply absolute top-0 left-0;
+			@apply w-[var(--avatar-size)] h-[var(--avatar-size)];
+			@apply transition transform-gpu scale-100 bg-gray-200;
+		}
+	}
+}
+
+.title {
+	@apply text-base font-bold;
+	@apply mb-0;
+	@apply transition;
+}
+
+.score {
+	@apply absolute top-1/2 right-0;
+	@apply flex items-center justify-center;
+	@apply min-w-[var(--score-size)] h-[var(--score-size)];
+	@apply font-extrabold text-xs text-white text-center;
+	@apply bg-cyan-400;
+	@apply rounded-full;
+	@apply transform-gpu -translate-y-1/2;
+}

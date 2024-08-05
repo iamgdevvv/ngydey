@@ -1,0 +1,84 @@
+.account_box_wrapper {
+	--offset-bottom: 40px;
+	@apply sticky top-0 z-[1];
+	@apply w-full min-h-[calc(var(--height-box)+var(--offset-bottom))] mb-[calc((var(--offset-bottom)/2)*-1)];
+	@apply bg-cyan-50;
+
+	& + * {
+		@apply relative z-[3];
+		@apply w-full pt-[var(--inner-container)];
+		@apply bg-white rounded-t-[var(--inner-container)];
+	}
+}
+
+.account_box {
+	@apply flex flex-wrap items-start justify-between;
+	@apply w-full max-w-[var(--container)] pt-[20px] px-[calc(var(--inner-container)/2)];
+}
+
+.detail_account {
+	--avatar-size: 48px;
+	@apply relative;
+	@apply flex flex-col;
+	@apply w-2/3 min-h-[var(--avatar-size)] pt-[6px] pl-[calc(var(--avatar-size)+10px)];
+
+	.account_avatar {
+		@apply absolute top-0 left-0;
+		@apply w-[var(--avatar-size)] h-[var(--avatar-size)] p-[8px];
+		@apply text-white;
+		@apply object-cover transition-all;
+
+		&::before {
+			@apply content-[''] absolute z-[1] top-0 left-0 w-full h-full bg-cyan-400 rounded-full animate-ping;
+		}
+
+		&>* {
+			@apply relative z-[2] rounded-[var(--rounded-special)];
+		}
+	}
+
+	svg.account_avatar {
+		@apply p-[10px];
+	}
+
+	.account_name {
+		@apply text-sm font-bold;
+		@apply mb-[4px];
+	}
+
+	.account_meta {
+		@apply text-xs;
+	}
+}
+
+.action_account {
+	@apply w-1/3 mx-[-4px] mb-[-8px];
+	@apply flex items-start flex-wrap justify-end;
+
+	.item_action {
+		@apply w-auto px-[4px] mb-[8px];
+	}
+
+	.cta_action {
+		@apply w-[32px] h-[32px] p-0;
+		@apply justify-center;
+		@apply text-xl;
+
+		&.cta_action_logout {
+			@apply border-gray-400 text-gray-400;
+			@apply hover:border-red-500 hover:text-red-500 hover:bg-transparent;
+		}
+	}
+}
+
+.icon_action_account {
+	@apply text-lg;
+}
+
+.user_action_account {
+	@apply w-full mt-[12px];
+}
+
+.cta_action_add {
+	@apply justify-center;
+}

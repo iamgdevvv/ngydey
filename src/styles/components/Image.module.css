@@ -1,0 +1,15 @@
+.image_wrapper {
+	@apply w-full;
+}
+
+.image_inner {
+	@apply relative w-full flex items-start;
+}
+
+.img {
+	@apply w-full h-auto object-cover object-center;
+
+	&[src*='jpg'], &[src*='jpeg'] {
+		@apply bg-gray-200;
+	}
+}
