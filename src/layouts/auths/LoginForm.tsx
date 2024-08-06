@@ -52,12 +52,14 @@ export default function LoginForm({ className = '' }: Prop) {
 				label='Email'
 				size='md'
 				mb='md'
+				disabled={isLoadingLogin}
 				{...form.getInputProps('email')}
 			/>
 			<PasswordInput
 				label='Password'
 				size='md'
 				mb='md'
+				disabled={isLoadingLogin}
 				{...form.getInputProps('password')}
 			/>
 			<Button
@@ -66,6 +68,7 @@ export default function LoginForm({ className = '' }: Prop) {
 				mt='xl'
 				size='lg'
 				loading={isLoadingLogin}
+				disabled={isLoadingLogin}
 			>
 				Login
 			</Button>

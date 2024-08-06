@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 import forumApi from '@/redux/apis/forumApi';
-import { useAppDispatch } from '@/hooks/redux';
 
 export type AuthState = {
 	token: string;

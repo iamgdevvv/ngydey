@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button, PasswordInput } from '@mantine/core';
 import { TransformedValues, useForm } from '@mantine/form';
@@ -8,6 +8,7 @@ import { RegisterSchema, PayloadRegister } from '@/schema/auth';
 import { useLogin } from '@/hooks/auth-user';
 import { useRegisterUserMutation } from '@/redux/apis/forumApi';
 import { MessageRest } from '@/components/Message';
+import { rtkQueryLoading } from '@/helper/redux-utils';
 
 type Prop = {
 	className?: string;
@@ -15,12 +16,16 @@ type Prop = {
 
 export default function RegisterForm({ className = '' }: Prop) {
 	const navigate = useNavigate();
-	const [triggerLogin, isLogin] = useLogin();
+	const { triggerLogin, isLoadingLogin, resultLogin, resultUser } = useLogin();
 	const [triggerRegister, resultRegister] = useRegisterUserMutation();
 	const form = useForm<PayloadRegister>({
 		validate: zodResolver(RegisterSchema),
 		validateInputOnBlur: true,
 	});
+
+	const isLoadingRegister = useMemo(() => {
+		return isLoadingLogin || rtkQueryLoading(resultRegister);
+	}, [isLoadingLogin, resultRegister]);
 
 	const handleSubmit = useCallback(
 		(values: TransformedValues<typeof form>) => {
@@ -41,10 +46,10 @@ export default function RegisterForm({ className = '' }: Prop) {
 	}, [form.values, resultRegister.isSuccess, triggerLogin]);
 
 	useEffect(() => {
-		if (isLogin) {
+		if (resultLogin.isSuccess && resultUser.isSuccess) {
 			navigate('/');
 		}
-	}, [isLogin, navigate]);
+	}, [resultUser.isSuccess, resultLogin.isSuccess, navigate]);
 
 	return (
 		<form
@@ -60,18 +65,21 @@ export default function RegisterForm({ className = '' }: Prop) {
 				label='Name'
 				size='md'
 				mb='md'
+				disabled={isLoadingRegister}
 				{...form.getInputProps('name')}
 			/>
 			<TextInput
 				label='Email'
 				size='md'
 				mb='md'
+				disabled={isLoadingRegister}
 				{...form.getInputProps('email')}
 			/>
 			<PasswordInput
 				label='Password'
 				size='md'
 				mb='md'
+				disabled={isLoadingRegister}
 				{...form.getInputProps('password')}
 			/>
 			<Button
@@ -79,6 +87,8 @@ export default function RegisterForm({ className = '' }: Prop) {
 				fullWidth
 				mt='xl'
 				size='lg'
+				loading={isLoadingRegister}
+				disabled={isLoadingRegister}
 			>
 				Register
 			</Button>

@@ -96,9 +96,22 @@ const loginMockResponse = {
 	},
 };
 
+const registerMockResponse = {
+	status: 'success',
+	message: 'ok',
+	data: {
+		user: {
+			id: faker.database.mongodbObjectId(),
+			name: faker.internet.displayName(),
+			email: faker.internet.email(),
+			avatar: faker.image.avatar(),
+		},
+	},
+};
+
 const errorMockResponse = {
 	status: 'error',
-	message: 'Not Found',
+	message: 'Not Foundqq',
 	data: {},
 };
 
@@ -108,5 +121,6 @@ export {
 	detailThreadMockResponse,
 	leaderboardsMockResponse,
 	loginMockResponse,
+	registerMockResponse,
 	errorMockResponse,
 };

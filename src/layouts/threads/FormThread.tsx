@@ -1,5 +1,5 @@
 import { Suspense, lazy, useCallback, useEffect, useMemo, useState } from 'react';
-import { Button, Loader, Skeleton, Text, TextInput } from '@mantine/core';
+import { Button, Skeleton, Text, TextInput } from '@mantine/core';
 import { TransformedValues, useForm, zodResolver } from '@mantine/form';
 import { rtkQueryLoading } from '@/helper/redux-utils';
 import { removeEmtpyElements } from '@/helper/react-utils';
@@ -57,6 +57,7 @@ export default function FormThread({ className = '', disabled = false, onSuccess
 				label='Title'
 				size='md'
 				mb='md'
+				disabled={isLoadingCreateThread || disabled}
 				{...form.getInputProps('title')}
 			/>
 			<Suspense
@@ -105,6 +106,7 @@ export default function FormThread({ className = '', disabled = false, onSuccess
 				size='md'
 				mb='md'
 				mt={isInvalidComment ? '' : 'md'}
+				disabled={isLoadingCreateThread || disabled}
 				{...form.getInputProps('category')}
 			/>
 			<Button
@@ -112,9 +114,10 @@ export default function FormThread({ className = '', disabled = false, onSuccess
 				mt='sm'
 				size='md'
 				disabled={isLoadingCreateThread}
+				loading={isLoadingCreateThread}
 				className='ml-auto'
 			>
-				{isLoadingCreateThread ? <Loader size='sm' /> : 'Create'}
+				Create
 			</Button>
 		</form>
 	);

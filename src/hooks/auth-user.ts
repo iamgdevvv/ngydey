@@ -1,6 +1,4 @@
-/* eslint-disable  @typescript-eslint/no-explicit-any */
-import { useCallback, useMemo, useState } from 'react';
-import { rtkQueryLoading } from '@/helper/redux-utils';
+import { useCallback, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 import { useLazyGetUserQuery, useLoginUserMutation } from '@/redux/apis/forumApi';
 import { removeAuth } from '@/redux/slices/auth';
