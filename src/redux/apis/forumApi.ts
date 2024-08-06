@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { RootState } from '@/redux/store';
+import { BASE_API_URL } from '@/configs/variables';
 import { PayloadLogin, PayloadRegister } from '@/schema/auth';
 import { PayloadCreateComment, PayloadCreateThread, PayloadVoteComment, PayloadVoteThread } from '@/schema/thread';
 
@@ -7,12 +8,12 @@ import { PayloadCreateComment, PayloadCreateThread, PayloadVoteComment, PayloadV
 const forumApi = createApi({
 	reducerPath: 'dicoding-forum',
 	baseQuery: fetchBaseQuery({
-		baseUrl: 'https://forum-api.dicoding.dev/v1',
+		baseUrl: BASE_API_URL,
 		prepareHeaders: (headers, { getState }) => {
 			const rootState = getState() as RootState;
 
-			if (rootState.auth_user.auth.token) {
-				headers.set('authorization', `Bearer ${rootState.auth_user.auth.token}`);
+			if (rootState.auth_slice.auth.token) {
+				headers.set('authorization', `Bearer ${rootState.auth_slice.auth.token}`);
 			}
 
 			return headers;

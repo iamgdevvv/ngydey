@@ -1,5 +1,5 @@
 import { Suspense, lazy, useCallback, useEffect, useMemo, useState } from 'react';
-import { Avatar, Button, Loader } from '@mantine/core';
+import { Avatar, Button } from '@mantine/core';
 import { TransformedValues, useForm, zodResolver } from '@mantine/form';
 import { rtkQueryLoading } from '@/helper/redux-utils';
 import { useCreateCommentMutation } from '@/redux/apis/forumApi';
@@ -54,6 +54,10 @@ export default function FormComment({ threadId, className = '', disabled = false
 		}
 	}, [resultCreateComment, onSuccess]);
 
+	if (!user.id) {
+		return null;
+	}
+
 	return (
 		<form
 			onSubmit={form.onSubmit(handleSubmit, () => setSubmited(true))}
@@ -90,10 +94,11 @@ export default function FormComment({ threadId, className = '', disabled = false
 				type='submit'
 				mt='sm'
 				size='md'
-				disabled={isLoadingCreateComment}
+				loading={isLoadingCreateComment}
+				disabled={isLoadingCreateComment || disabled}
 				className='ml-auto'
 			>
-				{isLoadingCreateComment ? <Loader size='sm' /> : 'Comment'}
+				Comment
 			</Button>
 		</form>
 	);

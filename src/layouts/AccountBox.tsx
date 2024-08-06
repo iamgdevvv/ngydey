@@ -16,7 +16,7 @@ type Props = {
 
 export default function AccountBox({ className = '', parentClass = '' }: Props) {
 	const isLogin = useIsLogin();
-	const getUser = useGetUser();
+	const dataUser = useGetUser();
 	const navigate = useNavigate();
 	const [openedFormThread, { open, close }] = useDisclosure(false);
 	const handleLogout = useLogout();
@@ -43,14 +43,14 @@ export default function AccountBox({ className = '', parentClass = '' }: Props) 
 				>
 					<div className={styles.detail_account}>
 						<Avatar
-							src={getUser?.avatar}
+							src={dataUser?.avatar}
 							radius='xl'
-							alt={getUser?.name || 'Guest'}
+							alt={dataUser?.name || 'Guest'}
 							className={styles.account_avatar}
 						/>
 						{/* <PiUserCircle className={styles.account_avatar} /> */}
-						<span className={styles.account_name}>{getUser?.name || 'Guest'}</span>
-						<span className={styles.account_meta}>{getUser?.email || 'Please login or register.'}</span>
+						<span className={styles.account_name}>{dataUser?.name || 'Guest'}</span>
+						<span className={styles.account_meta}>{dataUser?.email || 'Please login or register.'}</span>
 					</div>
 					<div className={styles.action_account}>
 						{isLogin ? (

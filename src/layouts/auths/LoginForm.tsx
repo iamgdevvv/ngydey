@@ -14,24 +14,24 @@ type Prop = {
 
 export default function LoginForm({ className = '' }: Prop) {
 	const navigate = useNavigate();
-	const [triggerLogin, isLogin, resultLogin] = useLogin();
+	const { triggerLogin, isLoadingLogin, resultLogin, resultUser } = useLogin();
 	const form = useForm<PayloadLogin>({
 		validate: zodResolver(LoginSchema),
 		validateInputOnBlur: true,
 	});
 
 	const handleSubmit = useCallback(
-		(values: TransformedValues<typeof form>) => {
-			triggerLogin(values);
+		async (values: TransformedValues<typeof form>) => {
+			await triggerLogin(values);
 		},
 		[triggerLogin]
 	);
 
 	useEffect(() => {
-		if (isLogin) {
+		if (resultLogin.isSuccess && resultUser.isSuccess) {
 			navigate('/');
 		}
-	}, [isLogin, navigate]);
+	}, [resultUser.isSuccess, resultLogin.isSuccess, navigate]);
 
 	return (
 		<form
@@ -43,16 +43,23 @@ export default function LoginForm({ className = '' }: Prop) {
 				result={resultLogin}
 				mb='lg'
 			/>
+			<MessageRest
+				hideSuccess={false}
+				result={resultUser}
+				mb='lg'
+			/>
 			<TextInput
 				label='Email'
 				size='md'
 				mb='md'
+				disabled={isLoadingLogin}
 				{...form.getInputProps('email')}
 			/>
 			<PasswordInput
 				label='Password'
 				size='md'
 				mb='md'
+				disabled={isLoadingLogin}
 				{...form.getInputProps('password')}
 			/>
 			<Button
@@ -60,6 +67,8 @@ export default function LoginForm({ className = '' }: Prop) {
 				fullWidth
 				mt='xl'
 				size='lg'
+				loading={isLoadingLogin}
+				disabled={isLoadingLogin}
 			>
 				Login
 			</Button>

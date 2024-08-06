@@ -5,7 +5,7 @@ import BlockComment from '@/layouts/comments/BlockComment';
 import styles from '@/styles/layouts/Listing.module.css';
 
 type Prop = {
-	thread?: Thread;
+	thread: Thread;
 	disabled?: boolean;
 	loading?: boolean;
 	type?: 'block';
@@ -63,7 +63,7 @@ export default function ListingComment({
 		);
 	}
 
-	if (!thread) {
+	if (thread.comments.length === 0) {
 		return (
 			<div className={`${styles.listing_wrapper} ${className}`}>
 				<p className='text-center'>Be the first to left comment here.</p>
